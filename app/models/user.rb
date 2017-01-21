@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-  belongs_to :order
-  has_many :amenities
-  has_many :addresses
+
+  has_many :orders
+
+  belongs_to :amenity
+  belongs_to :address
+
 end

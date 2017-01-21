@@ -1,4 +1,6 @@
 class OrderElement < ApplicationRecord
-  has_many :orders
-  has_many :products
+
+  belongs_to :order
+  belongs_to :product
+
 end

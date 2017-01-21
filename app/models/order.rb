@@ -1,7 +1,10 @@
 class Order < ApplicationRecord
-  belongs_to :order_element
-  has_many :users
-  has_many :shippings
-  has_many :statuses
-  has_many :addresses
+
+  has_many :order_elements
+
+  belongs_to :user
+  belongs_to :shipping
+  belongs_to :status
+  belongs_to :address
+
 end
