@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120205608) do
+ActiveRecord::Schema.define(version: 20170121155251) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "country",     null: false
@@ -28,34 +28,38 @@ ActiveRecord::Schema.define(version: 20170120205608) do
   end
 
   create_table "order_elements", force: :cascade do |t|
-    t.integer "id_order",   null: false
-    t.integer "id_product", null: false
-    t.integer "count",      null: false
-    t.integer "price",      null: false
-    t.integer "discount",   null: false
-    t.index ["id_order"], name: "index_order_elements_on_id_order"
-    t.index ["id_product"], name: "index_order_elements_on_id_product"
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.integer  "count",      null: false
+    t.integer  "price",      null: false
+    t.integer  "discount",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_elements_on_order_id"
+    t.index ["product_id"], name: "index_order_elements_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "id_user",     null: false
-    t.integer "id_shipping", null: false
-    t.integer "id_status",   null: false
-    t.integer "discount",    null: false
-    t.integer "id_address",  null: false
-    t.index ["id_address"], name: "index_orders_on_id_address"
-    t.index ["id_shipping"], name: "index_orders_on_id_shipping"
-    t.index ["id_status"], name: "index_orders_on_id_status"
-    t.index ["id_user"], name: "index_orders_on_id_user"
+    t.integer  "user_id"
+    t.integer  "shipping_id"
+    t.integer  "status_id"
+    t.integer  "discount",    null: false
+    t.integer  "address_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["address_id"], name: "index_orders_on_address_id"
+    t.index ["shipping_id"], name: "index_orders_on_shipping_id"
+    t.index ["status_id"], name: "index_orders_on_status_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "prodcuts", force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.string  "name",        null: false
     t.string  "code",        null: false
     t.integer "stock",       null: false
-    t.integer "id_category", null: false
+    t.integer "category_id"
     t.integer "price",       null: false
-    t.index ["id_category"], name: "index_prodcuts_on_id_category"
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "shippings", force: :cascade do |t|
@@ -68,15 +72,17 @@ ActiveRecord::Schema.define(version: 20170120205608) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string  "first_name", null: false
-    t.string  "last_name",  null: false
-    t.string  "mail",       null: false
-    t.string  "login",      null: false
-    t.string  "password",   null: false
-    t.integer "id_amenity", null: false
-    t.integer "id_address", null: false
-    t.index ["id_address"], name: "index_users_on_id_address"
-    t.index ["id_amenity"], name: "index_users_on_id_amenity"
+    t.string   "first_name", null: false
+    t.string   "last_name",  null: false
+    t.string   "mail",       null: false
+    t.string   "login",      null: false
+    t.string   "password",   null: false
+    t.integer  "amenity_id"
+    t.integer  "address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_users_on_address_id"
+    t.index ["amenity_id"], name: "index_users_on_amenity_id"
   end
 
 end
