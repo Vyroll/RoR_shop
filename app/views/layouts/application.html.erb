@@ -9,8 +9,25 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <nav>
+      <ul>
+        <% if user_signed_in? %>
+            <li><a href="#">Profil</a></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to 'Wyloguj się', destroy_user_session_path, method: :delete %></li>
+            <% else %>
+            <li><%= link_to 'Zaloguj się', new_user_session_path  %></li>
+            <li><%= link_to 'Rejestracja', new_user_registration_path %></li>
+        <% end %>
+        
+        
+      </ul>
+    </nav>
+
+    <div id="content">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+      </div>
   </body>
 </html>
