@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :orders
+  #has_many :orders
 
-  belongs_to :amenity
+  #belongs_to :amenity
   #belongs_to :address
 end
