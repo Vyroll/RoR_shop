@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>USERS</h1>
+<p> this view contains informations about users</p>
+
+<table>
+  <thead>
+  <tr>
+    <th>email</th>
+  </tr>
+  </thead>
+      <tbody>
+      <% @users.each do |user| %>
+          <tr>
+            <td><%= user.email %></td>
+          </tr>
+      <% end %>
+      </tbody>
+</table>
