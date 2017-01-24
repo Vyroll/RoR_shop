@@ -12,23 +12,38 @@
     <nav class="navbar navbar-default">
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-left">
-          <% if user_signed_in? %>
-            <li><%= link_to 'Home'%></li>
-            <li><%= link_to 'Products'%></li>
-            <% else %>
-            <li><%= link_to 'Home'%></li>
-            <li><%= link_to 'Products'%></li>
-        <% end %>
+          <% if user_signed_in? && current_user.amenity_id == 1 %>
+              user
+              <li><%= link_to 'Home'%></li>
+              <li><%= link_to 'Products'%></li>
+          <% else %>
+              <% if user_signed_in? && current_user.amenity_id == 2 %>
+                  admin
+                  <li><%= link_to 'Home'%></li>
+                  <li><%= link_to 'Products'%></li>
+              <% else %>
+                  guest
+                  <li><%= link_to 'Home'%></li>
+                  <li><%= link_to 'Products'%></li>
+              <% end %>
+          <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
+          <% if user_signed_in? && current_user.amenity_id == 1 %>
+            user
             <li><%= link_to 'Profile'%></li>
             <li><%= link_to 'Show cart'%></li>
             <li><%= link_to 'Log out', destroy_user_session_path, method: :delete%></li>
+          <% else %>
+            <% if user_signed_in? && current_user.amenity_id == 2 %>
+              admin
+              <li><%= link_to 'Log out', destroy_user_session_path, method: :delete%></li>
             <% else %>
-            <li><%= link_to 'Show cart'%></li>
-            <li><%= link_to 'Sign in', new_user_session_path%></li>
-            <li><%= link_to 'Sign up', new_user_registration_path%></li>
+              guest
+              <li><%= link_to 'Show cart'%></li>
+              <li><%= link_to 'Sign in', new_user_session_path%></li>
+              <li><%= link_to 'Sign up', new_user_registration_path%></li>
+              <% end %>
           <% end %>
         </ul>
       </div>

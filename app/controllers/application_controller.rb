@@ -4,9 +4,4 @@ class ApplicationController < ActionController::Base
   def tmp
   end
 
-	def amenity 
-    return current_user.amenity_id 
-		end
-	helper_method :amenity
-
 end
