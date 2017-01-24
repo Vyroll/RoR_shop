@@ -13,16 +13,17 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-left">
           <% if user_signed_in? && current_user.amenity_id == 1 %>
-              user
+              <!--user-->
               <li><%= link_to 'Home'%></li>
               <li><%= link_to 'Products'%></li>
           <% else %>
               <% if user_signed_in? && current_user.amenity_id == 2 %>
-                  admin
+                  <!--admin-->
                   <li><%= link_to 'Home'%></li>
                   <li><%= link_to 'Products'%></li>
+                  <li><%= link_to 'List Users', :controller => :administrator, :action => :list_users %></li>
               <% else %>
-                  guest
+                  <!--guest-->
                   <li><%= link_to 'Home'%></li>
                   <li><%= link_to 'Products'%></li>
               <% end %>
@@ -30,16 +31,16 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? && current_user.amenity_id == 1 %>
-            user
+            <!--user-->
             <li><%= link_to 'Profile'%></li>
             <li><%= link_to 'Show cart'%></li>
             <li><%= link_to 'Log out', destroy_user_session_path, method: :delete%></li>
           <% else %>
             <% if user_signed_in? && current_user.amenity_id == 2 %>
-              admin
+              <!--admin-->
               <li><%= link_to 'Log out', destroy_user_session_path, method: :delete%></li>
             <% else %>
-              guest
+              <!--guest-->
               <li><%= link_to 'Show cart'%></li>
               <li><%= link_to 'Sign in', new_user_session_path%></li>
               <li><%= link_to 'Sign up', new_user_registration_path%></li>
