@@ -9,6 +9,7 @@
   </head>
 
   <body>
+<<<<<<< Updated upstream
     <nav>
       <ul>
         <% if user_signed_in? %>
@@ -22,6 +23,32 @@
         
         
       </ul>
+=======
+    <nav class="navbar navbar-default">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left">
+          <% if user_signed_in? %>
+            <li><%= link_to 'Home'%></li>
+            <li><%= link_to 'Products'%></li>
+            <% else %>
+            <li><%= link_to 'Home'%></li>
+            <li><%= link_to 'Products'%></li>
+        <% end %>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><%= link_to 'Profile'%></li>
+            <li><%= link_to 'Show cart'%></li>
+            <li><%= link_to 'Log out', destroy_user_session_path, method: :delete%></li>
+            <% else %>
+            <li><%= link_to 'Show cart'%></li>
+            <li><%= link_to 'Sign in', new_user_session_path%></li>
+            <li><%= link_to 'Sign up', new_user_registration_path%></li>
+        <% end %>
+        </ul>
+      </div>
+>>>>>>> Stashed changes
     </nav>
 
     <div id="content">
