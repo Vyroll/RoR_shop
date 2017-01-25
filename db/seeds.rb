@@ -8,3 +8,7 @@
 
 Amenity.create(name: 'user')
 Amenity.create(name: 'admin')
+
+Category.create(name: 'card_game')
+Category.create(name: 'board_game')
+Category.create(name: 'board_game')
