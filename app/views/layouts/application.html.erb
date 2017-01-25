@@ -15,7 +15,6 @@
           <% if user_signed_in? && current_user.amenity_id == 1 %>
               <!--user-->
               <li><%= link_to 'Home'%></li>
-
               <li><%= link_to 'List_products', :controller => :products, :action => :index %></li>
           <% else %>
               <% if user_signed_in? && current_user.amenity_id == 2 %>
@@ -34,7 +33,7 @@
           <% if user_signed_in? && current_user.amenity_id == 1 %>
             <!--user-->
             <li><%= link_to 'Profile'%></li>
-            <li><%= link_to 'Show cart'%></li>
+            <li><%= link_to 'Show cart', order_path %></li>
             <li><%= link_to 'Log out', destroy_user_session_path, method: :delete%></li>
           <% else %>
             <% if user_signed_in? && current_user.amenity_id == 2 %>
@@ -42,7 +41,6 @@
               <li><%= link_to 'Log out', destroy_user_session_path, method: :delete%></li>
             <% else %>
               <!--guest-->
-              <li><%= link_to 'Show cart'%></li>
               <li><%= link_to 'Sign in', new_user_session_path%></li>
               <li><%= link_to 'Sign up', new_user_registration_path%></li>
               <% end %>

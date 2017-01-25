@@ -8,12 +8,15 @@ class OrderElementsController < ApplicationController
     if !Order.exists?(user_id: current_user.id)
       @order = Order.new
       @order.user_id = current_user.id
+      @order.shipping_id = 1
       @order.status_id = 1
       @order.discount = 0
+      @order.address_id = 0
       @order.save
     end
 
-    @order_element.order_id = Order.where(:user_id => current_user.id, :status => 1).first!.id
+
+    @order_element.order_id = Order.where(:user_id => current_user.id, :status_id => 1).first.id
     @order_element.count = 1
     @order_element.price = Product.find(@order_element.product_id).price
     @order_element.discount = 0
@@ -30,9 +33,6 @@ class OrderElementsController < ApplicationController
   end
 
   def tmp
-  end
-
-  def show
   end
 
   private

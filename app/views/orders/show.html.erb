@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cart</h1>
+<p> this view contains informations content of this user's cart</p>
+
+<table>
+  <thead>
+  <% if @order_elements%>
+  <tr>
+    <th>price</th>
+  </tr>
+  </thead>
+  <tbody>
+
+    <% @order_elements.each do |element| %>
+        <tr>
+          <td><%= element.price %></td>
+        </tr>
+    <% end %>
+  <% else %>
+  cart is empty
+
+  <% end %>
+
+
+  </tbody>
+</table>
