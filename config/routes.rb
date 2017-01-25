@@ -6,9 +6,8 @@ Rails.application.routes.draw do
   end
 
   resources :products
-  namespace :products do
+  resources :order_elements
 
-  end
 
 
   namespace :administrator do

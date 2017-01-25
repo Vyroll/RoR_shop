@@ -15,17 +15,18 @@
           <% if user_signed_in? && current_user.amenity_id == 1 %>
               <!--user-->
               <li><%= link_to 'Home'%></li>
-              <li><%= link_to 'Products'%></li>
+
+              <li><%= link_to 'List_products', :controller => :products, :action => :index %></li>
           <% else %>
               <% if user_signed_in? && current_user.amenity_id == 2 %>
                   <!--admin-->
                   <li><%= link_to 'Home'%></li>
-                  <li><%= link_to 'Products'%></li>
+                  <li><%= link_to 'Add_Products', :controller => :products, :action => :new %></li>
+                  <li><%= link_to 'List_Products', :controller => :products, :action => :index %></li>
                   <li><%= link_to 'List Users', :controller => :administrator, :action => :list_users %></li>
               <% else %>
                   <!--guest-->
                   <li><%= link_to 'Home'%></li>
-                  <li><%= link_to 'Products'%></li>
               <% end %>
           <% end %>
         </ul>
