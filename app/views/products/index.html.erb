@@ -5,7 +5,12 @@
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>name</th>
+      <th>code</th>
+      <th>stock</th>
+      <th>category</th>
+      <th>price</th>
+
     </tr>
   </thead>
 
@@ -14,6 +19,10 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
+        <td><%= product.code %></td>
+        <td><%= product.stock %></td>
+        <td><%= Category.find(product.category_id).name %></td>
+        <td><%= product.price %></td>
         <td><%= link_to 'Show', product %></td>
         <% if current_user.amenity_id == 2 %>
           <td><%= link_to 'Edit', edit_product_path(product) %></td>
@@ -23,7 +32,7 @@
               <%= form_for @order_element  do |f| %>
 
                   <%= f.hidden_field :product_id, :value => product.id %>
-                  <%= f.submit %>
+                  <%= f.submit "Add to cart" %>
               <% end %>
             <% end %></td>
       </tr>
@@ -33,4 +42,6 @@
 
 <br>
 
+<% if current_user.amenity_id == 2 %>
 <%= link_to 'New Product', new_product_path %>
+<% end %>

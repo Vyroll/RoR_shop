@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20170122164201) do
     t.datetime "updated_at",                          null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "amenity_id"
+    t.integer  "amenity_id",             default: 1
     t.integer  "address_id"
     t.index ["address_id"], name: "index_users_on_address_id"
     t.index ["amenity_id"], name: "index_users_on_amenity_id"

@@ -7,14 +7,20 @@
   <thead>
   <% if @order_elements%>
   <tr>
+    <th>name</th>
     <th>price</th>
+    <th>discount</th>
   </tr>
   </thead>
   <tbody>
 
     <% @order_elements.each do |element| %>
         <tr>
+          <td><%= Product.find(element.product_id).name %></td>
           <td><%= element.price %></td>
+          <td><%= element.discount %></td>
+
+
         </tr>
     <% end %>
   <% else %>

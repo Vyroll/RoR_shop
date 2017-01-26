@@ -2,7 +2,6 @@
 <html>
   <head>
     <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <HTML lang="pl">
     <META name="copyright" content="&copy;2017 LN-MH-JK">
     <META name="title" content="RoRShopLocal">
     <META name="description"
@@ -23,18 +22,18 @@
         <ul class="nav navbar-nav navbar-left">
           <% if user_signed_in? && current_user.amenity_id == 1 %>
               <!--user-->
-              <li><%= link_to 'Home'%></li>
+              <li><%= link_to 'Home', tmp_path %></li>
               <li><%= link_to 'List_products', :controller => :products, :action => :index %></li>
           <% else %>
               <% if user_signed_in? && current_user.amenity_id == 2 %>
                   <!--admin-->
-                  <li><%= link_to 'Home'%></li>
+                  <li><%= link_to 'Home', tmp_path %></li>
                   <li><%= link_to 'Add_Products', :controller => :products, :action => :new %></li>
                   <li><%= link_to 'List_Products', :controller => :products, :action => :index %></li>
                   <li><%= link_to 'List Users', :controller => :administrator, :action => :list_users %></li>
               <% else %>
                   <!--guest-->
-                  <li><%= link_to 'Home'%></li>
+                  <li><%= link_to 'Home', tmp_path %></li>
               <% end %>
           <% end %>
         </ul>
@@ -42,7 +41,6 @@
           <% if user_signed_in? && current_user.amenity_id == 1 %>
 
             <!--user-->
-            <li><a><%= link_to 'Profile'%></a></li>
             <li><%= link_to 'Show cart', order_show_path %></li>
 
 
