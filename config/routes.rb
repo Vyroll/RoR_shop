@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   resources :products
   resources :order_elements
-  resources :orders
+  
+  devise_scope :orders do
+    get 'orders/show', to: 'orders#show', as: :order_show
+    get 'orders/edit', to: 'orders#edit', as: :order_edit
+  end
 
 
 
